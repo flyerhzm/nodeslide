@@ -8,6 +8,7 @@ var SlideshowSchema = new Schema({
   , username    : {type: String}
   , url         : {type: String}
   , created     : {type: Date, default: Date.now}
+  , tags        : {type: Array}
 });
 
 mongoose.model('Slideshow', SlideshowSchema);
