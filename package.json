@@ -3,9 +3,11 @@
     "version": "0.0.1",
     "dependencies": {
         "express": ""
+      , "jade": ""
       , "nodemon": ""
       , "underscore": ""
       , "htmlparser": ""
       , "mongoose": ""
+      , "dateformat": ""
     }
 }

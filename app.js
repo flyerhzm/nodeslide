@@ -8,6 +8,8 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.bodyParser());
   app.use(app.router);
+  app.set('view engine', 'jade');
+  app.set('view options', { layout: false });
 });
 
 app.configure('development', function(){
@@ -39,7 +41,7 @@ function loadSlideshows(req, res, next) {
 app.get('/slideshows', loadSlideshows, function(req, res, next) {
   var slideshows = req.slideshows;
   if (slideshows) {
-    res.send("slideshows/index: " + slideshows);
+    res.render('slideshows/index', { slideshows: slideshows });
   } else {
     next();
   }
@@ -59,7 +61,7 @@ function loadSlideshow(req, res, next) {
 app.get('/slideshows/:id', loadSlideshow, function(req, res, next) {
   var slideshow = req.slideshow;
   if (slideshow) {
-    res.send("slideshows/show: " + slideshow);
+    res.render('slideshows/show', { slideshow: slideshow });
   } else {
     next();
   }
