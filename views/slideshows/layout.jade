@@ -1,8 +1,17 @@
 doctype 5
-html(lang="en")
+html(lang="en", xml:lang="en", xmlns="http://www.w3.org/1999/xhtml")
   head
     title Node Slide
     link(href="stylesheets/screen.css", style="text/css", rel="stylesheet")
     link(href="stylesheets/nodeslide.css", style="text/css", rel="stylesheet")
   body
-    block content
+    .container#header
+      include header
+    .container
+      .body.span-19
+        block content
+      #sidebar.sidebar.span-5.last
+        include sidebar
+      .clear
+      .footer
+        include footer

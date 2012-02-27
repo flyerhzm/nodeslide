@@ -1,19 +1,21 @@
 extends layout
 
 block content
-  h1 Slideshows
-  .slides
-    each slideshow in slideshows
-      .slide
-        .header
-          h3
-            a(href="/slideshows/"+slideshow.id)=slideshow.title
-          span.time= slideshow.created
-        .slide_meta
-          .author= slideshow.username
-          span.domain
-            a(href=slideshow.url) www.slideshare.net
-        .description= slideshow.description
-        p.tags
-          each tag in slideshow.tags
-            = tag
+  .slide-box
+    .slide-block
+      h3 Showing slides
+      .slides
+        each slideshow in slideshows
+          .slide
+            .header
+              h3
+                a(href="/slideshows/"+slideshow.id)=slideshow.title
+              span.time= slideshow.created
+            .slide_meta
+              .author= slideshow.username
+              span.domain
+                a(href=slideshow.url) www.slideshare.net
+            .description= slideshow.description
+            p.tags
+              each tag in slideshow.tags
+                a(href="#")= tag
