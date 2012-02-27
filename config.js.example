@@ -2,4 +2,5 @@ exports.config = {
     db: 'mongodb://127.0.0.1/nodeslide'
   , slideshare_key: ""
   , slideshare_secret: ""
+  , crawl_size: 50
 }

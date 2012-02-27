@@ -9,5 +9,6 @@
       , "htmlparser": ""
       , "mongoose": ""
       , "dateformat": ""
+      , "rss": ""
     }
 }
