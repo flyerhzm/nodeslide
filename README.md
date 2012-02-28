@@ -8,4 +8,6 @@ Usage
 
     npm install
 
+then
+
     SLIDESHARE_KEY=xxx SLIDESHARE_SECRET=yyy node app.js
