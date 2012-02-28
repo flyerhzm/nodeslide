@@ -6,7 +6,7 @@ var config = {
 }
 
 if (process.env.MONGOLAB_URL) {
-  config["db"] = process.env.MONGOLAB_URI;
+  config["db"] = process.env.MONGOLAB_URL;
 }
 
 if (process.env.SLIDESHARE_KEY) {
