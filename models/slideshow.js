@@ -6,7 +6,7 @@ var Slideshow = new Schema({
     title         : {type: String}
   , description   : {type: String}
   , username      : {type: String}
-  , url           : {type: String}
+  , url           : {type: String, unique: true}
   , created       : {type: Date, default: Date.now}
   , tags          : {type: Array}
   , slideshare_id : {type: String}

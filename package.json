@@ -5,7 +5,6 @@
         "express": ""
       , "jade": ""
       , "nodemon": ""
-      , "underscore": ""
       , "htmlparser": ""
       , "mongoose": ""
       , "dateformat": ""
