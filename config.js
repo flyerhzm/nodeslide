@@ -12,8 +12,13 @@ if (process.env.MONGOLAB_URI) {
 if (process.env.SLIDESHARE_KEY) {
   config["slideshare_key"] = process.env.SLIDESHARE_KEY;
 }
+
 if (process.env.SLIDESHARE_SECRET) {
-  config["slideshare_secret"] = process.env.slideshare_secret;
+  config["slideshare_secret"] = process.env.SLIDESHARE_SECRET;
+}
+
+if (process.env.CRAWL_SIZE) {
+  config["crawl_size"] = parseInt(process.env.CRAWL_SIZE);
 }
 
 exports.config = config;

@@ -52,8 +52,8 @@ function generateFeeds(req, res, next) {
   var feed = new RSS({
     title: "Nodeslide RSS",
     description: "Nodeslide gathers all the latest node.js slides and presentations in one convenient place!",
-    feed_url: "http://nodeslide.heroku.com/slideshows.xml",
-    site_url: "http://nodeslide.heroku.com",
+    feed_url: "http://feeds.feedburner.com/nodeslide",
+    site_url: "http://nodeslide.herokuapp.com",
     author: "Richard Huang <flyerhzm@gmail.com>"
   });
   var slideshows = req.slideshows;
