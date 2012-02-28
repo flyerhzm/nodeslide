@@ -19,3 +19,8 @@ block content
             p.tags
               each tag in slideshow.tags
                 a(href="#")= tag
+      .pagination
+        unless current_page == 1
+          a.previous_page(href="?page="+(current_page-1)) ← Previous
+        unless current_page == total_page
+          a.next_page(href="?page="+(current_page+1)) Next →

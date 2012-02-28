@@ -29,7 +29,12 @@ app.get('/', function(req, res) {
 });
 
 function loadSlideshows(req, res, next) {
-  Slideshow.find({}).limit(10).exec(function(err, docs) {
+  var page = parseInt(req.query.page || 1)
+    , per_page = 10
+    , offset = (page - 1) * per_page;
+
+  req.current_page = page;
+  Slideshow.find({}).limit(per_page).skip(offset).desc("slideshare_id").exec(function(err, docs) {
     if (err) {
       next(new Error('Failed to load slideshows'));
     } else {
@@ -39,14 +44,27 @@ function loadSlideshows(req, res, next) {
   });
 }
 
-app.get('/slideshows', loadSlideshows, function(req, res, next) {
-  var slideshows = req.slideshows;
-  if (slideshows) {
-    res.render('slideshows/index', { slideshows: slideshows });
+function initPagination(req, res, next) {
+  Slideshow.count({}, function(err, count) {
+    if (err) {
+      next(new Error('Failed to init pagination for slideshows'));
+    } else {
+      var per_page = 10;
+      req.total_count = count;
+      req.total_pages = Math.ceil(count / 10);
+      next();
+    }
+  });
+}
+
+app.get('/slideshows', loadSlideshows, initPagination, function(req, res, next) {
+  if (req.slideshows) {
+    res.render('slideshows/index', { slideshows: req.slideshows, current_page: req.current_page, total_count: req.total_count, total_page: req.total_pages });
   } else {
     next();
   }
 });
+
 
 function generateFeeds(req, res, next) {
   var feed = new RSS({
