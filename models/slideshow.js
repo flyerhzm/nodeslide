@@ -10,15 +10,11 @@ var Slideshow = new Schema({
   , created       : {type: Date, default: Date.now}
   , tags          : {type: Array}
   , slideshare_id : {type: String}
+  , embed         : {type: String}
 });
 
 Slideshow.virtual('user_link').get(function() {
   return this.url.replace(/\/[^/]+$/, "");
-});
-
-Slideshow.virtual('embed').get(function() {
-  // escape html entities
-  return ('<div style="width:425px" id="__ss_' + this.slideshare_id + '"> <strong style="display:block;margin:12px 0 4px"><a href="' + this.url + '" title="' + this.title + '" target="_blank">' + this.title + '</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/' + this.slideshare_id + '?rel=0" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> <div style="padding:5px 0 12px"> View more presentations from <a href="' + this.user_link + '" target="_blank">' + this.username + '</a> </div> </div>').replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#39;");
 });
 
 mongoose.model('Slideshow', Slideshow);
