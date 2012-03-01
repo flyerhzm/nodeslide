@@ -29,7 +29,7 @@ app.get('/', function(req, res) {
 });
 
 function loadSlideshows(req, res, next) {
-  var page = Integer.parseInt(req.query.page || 1),
+  var page = parseInt(req.query.page || 1),
     per_page = 10,
     offset = (page - 1) * per_page;
 
