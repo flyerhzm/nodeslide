@@ -1,24 +1,10 @@
+var processEnv = process.env;
+
 var config = {
-    db: "mongodb://127.0.0.1/nodeslide"
-  , slideshare_key: ""
-  , slideshare_secret: ""
-  , crawl_size: 5
-}
-
-if (process.env.MONGOLAB_URI) {
-  config["db"] = process.env.MONGOLAB_URI;
-}
-
-if (process.env.SLIDESHARE_KEY) {
-  config["slideshare_key"] = process.env.SLIDESHARE_KEY;
-}
-
-if (process.env.SLIDESHARE_SECRET) {
-  config["slideshare_secret"] = process.env.SLIDESHARE_SECRET;
-}
-
-if (process.env.CRAWL_SIZE) {
-  config["crawl_size"] = parseInt(process.env.CRAWL_SIZE);
-}
+  db: processEnv.MONGOLAB_URI ? processEnv.MONGOLAB_URI : "mongodb://127.0.0.1/nodeslide",
+  slideshare_key: processEnv.SLIDESHARE_KEY ? processEnv.SLIDESHARE_KEY : "",
+  slideshare_secret: processEnv.SLIDESHARE_SECRET ? porcessEnv.SLIDESHARE_SECRET : "",
+  crawl_size: processEnv.CRAWL_SIZE ? processEnv.CRAWL_SIZE : 5
+};
 
 exports.config = config;

@@ -1,8 +1,8 @@
-var express = require('express')
-  , app = express.createServer()
-  , RSS = require('rss')
-  , models = require('./models')
-  , Slideshow = models.Slideshow;
+var express = require('express'),
+  app = express.createServer(),
+  RSS = require('rss'),
+  models = require('./models'),
+  Slideshow = models.Slideshow;
 
 app.configure(function(){
   app.use(express.logger());
@@ -29,9 +29,9 @@ app.get('/', function(req, res) {
 });
 
 function loadSlideshows(req, res, next) {
-  var page = parseInt(req.query.page || 1)
-    , per_page = 10
-    , offset = (page - 1) * per_page;
+  var page = Integer.parseInt(req.query.page || 1),
+    per_page = 10,
+    offset = (page - 1) * per_page;
 
   req.current_page = page;
   Slideshow.find({}).limit(per_page).skip(offset).desc("slideshare_id").exec(function(err, docs) {
@@ -75,8 +75,7 @@ function generateFeeds(req, res, next) {
     author: "Richard Huang <flyerhzm@gmail.com>"
   });
   var slideshows = req.slideshows;
-  var index;
-  for (index = 0; index < slideshows.length; index += 1) {
+  for (var index = 0, length = slideshows.length; index < length; index += 1) {
     var slideshow = slideshows[index];
     feed.item({
       title: slideshow.title,
@@ -85,7 +84,7 @@ function generateFeeds(req, res, next) {
       author: slideshow.username,
       date: slideshow.created
     });
-  };
+  }
   req.feeds = feed.xml();
   next();
 }
