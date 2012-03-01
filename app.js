@@ -34,7 +34,7 @@ function loadSlideshows(req, res, next) {
     , offset = (page - 1) * per_page;
 
   req.current_page = page;
-  Slideshow.find({}).limit(per_page).skip(offset).desc("slideshare_id").exec(function(err, docs) {
+  Slideshow.find({}).limit(per_page).skip(offset).desc("created").exec(function(err, docs) {
     if (err) {
       next(new Error('Failed to load slideshows'));
     } else {
