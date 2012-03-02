@@ -16,6 +16,7 @@ block content
               span.domain
                 a(href=slideshow.url) www.slideshare.net
             .description= slideshow.description
+            .embed!= slideshow.embed
             p.tags
               each tag in slideshow.tags
                 a(href="#")= tag
