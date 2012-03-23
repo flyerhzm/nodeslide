@@ -10,4 +10,6 @@ Usage
 
 then
 
-    SLIDESHARE_KEY=xxx SLIDESHARE_SECRET=yyy node app.js
+    SLIDESHARE_KEY=xxx SLIDESHARE_SECRET=yyy node lib/crawler.js
+
+    node app.js
